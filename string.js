@@ -35,3 +35,5 @@ console.log(x.includes("you")) // tells if certain val is in the string
 console.log(x.split('-'))       // splits string into array on the basis of the seperator given
 
 console.log(x.startsWith("lo",1))   // checks if the given input starts with the position given (in the args)
+
+console.log(x.concat(" what you doing"))
