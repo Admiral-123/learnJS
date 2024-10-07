@@ -18,9 +18,9 @@ console.log(gI)
 // in json :-
 
 // {
-//     name:""
-//     email:""
-//     gender:""
+//     "name": "lks"
+//     "email": "lks@gmail.com"
+//     "gender": "mig29"
 // }
 
 // in array :-
