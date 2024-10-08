@@ -19,7 +19,7 @@ console.log(this)       // in the node enviroment there are no context so return
 function x(){
     let username="labuschagne"
     console.log(this)   // gives alot of info about the function of node enviroment
-    console.log(this.username)      // gives undefined as this. properly returns in objs
+    console.log(this.username)      // gives undefined as this. properly returns in objs not in functions
 }
 
  x() 
