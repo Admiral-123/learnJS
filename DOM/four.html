@@ -1,0 +1,67 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lets do DOM</title>
+</head>
+<body style="background-color: goldenrod;">
+
+    <ul class="language">
+        <li>javascript</li>
+        
+    </ul>
+    
+</body>
+<script>
+
+    
+    function addLang(name){     // created a function to add lists in dom
+        const li= document.createElement('li'); // created an element of li tag
+        li.innerHTML = `${name}`    // take input then traverse through the elements and put that input in innerHTML   
+
+       document.querySelector('.language').appendChild(li)  //we found the unordered list and appended the given list in that ul
+    }
+
+    addLang("java")     // everytime we run this method we're traversing the tree (expensive)
+    addLang("c")
+
+
+    // doing same thing in optimized way:
+    function addOptLang(name){
+        const li = document.createElement('li');
+        li.appendChild(document.createTextNode(name))   // instead of taking input we're directly creating a txt node and appending that into the element
+
+        document.querySelector('.language').appendChild(li)
+    }
+
+    addOptLang("typescript")
+
+    // editing these elements
+
+    
+        const lang = document.querySelector("li:nth-child(1)") // select which child of the element you've to edit  (li:nth-child() starts from 1)
+        const newLi = document.createElement('li')  // create a new element of the required tag
+        newLi.textContent =     "rust"  // add the given content in the new element
+        lang.replaceWith(newLi)     // replace that child with the new element
+
+    
+
+        const secLang = document.querySelector("li:nth-child(2)")
+        const newEle = document.createElement('li')
+        newEle.appendChild(document.createTextNode("cpp"))
+        // newEle.textContent = "golang"
+        secLang.replaceWith(newEle)
+
+
+        const thirdLang = document.querySelector('li:first-child')
+        thirdLang.outerHTML = '<li>lisp</li>'
+
+
+        //remove
+
+        const lastLang = document.querySelector('li:last-child')
+        lastLang.remove()
+
+
+</script>
+</html>
