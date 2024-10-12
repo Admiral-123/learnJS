@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BMI Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: #fff;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+    .input-box {
+      margin: 15px 0;
+    }
+    input[type="number"] {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 150px;
+    }
+    .bmi-box {
+      margin-top: 20px;
+      font-size: 24px;
+      padding: 15px;
+      border-radius: 5px;
+      background-color: #e7f3ff;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>BMI Calculator</h1>
+    <div class="input-box">
+      <label for="weight">Weight (kg): </label>
+      <input type="number" id="weight" placeholder="Enter weight">
+    </div>
+    <div class="input-box">
+      <label for="height">Height (cm): </label>
+      <input type="number" id="height" placeholder="Enter height">
+    </div>
+    <button id="calculateBtn">Calculate BMI</button>
+    <div class="bmi-box" id="bmiBox">BMI: N/A</div>
+
+    <div>
+    </div>
+  </div>
+
+
+
+</body>
+
+<script>
+
+
+    const bmiButton = document.getElementById('calculateBtn')   // get the element of bmi button
+
+    bmiButton.addEventListener('click', ()=>{       // with the help of event listener 
+        const weight= document.getElementById('weight').value;  // get the data
+        const height= document.getElementById('height').value/100;
+
+
+        if(weight>0 && height>0){       // if weight and height are above 0
+            const bmi = (weight / Math.pow(height, 2)).toFixed(2);    // take the bmi
+
+            const indicator = (bmi)=>{
+                if (bmi < 18.50) {
+                return "Underweight";
+            } else if (bmi >= 18.50 && bmi <= 24.90) {
+                return "Normal";
+            } else if (bmi >= 25 && bmi <= 30) {
+                return "Overweight";
+            } else {
+                return "Obese";
+            }
+            };
+
+            const i = indicator(bmi);
+
+            const bmiBox = document.getElementById('bmiBox');       // get the bmiBox
+            bmiBox.innerText = `BMI ${bmi} : ${i}`         // in that bmiBox add the bmi
+        }
+        else{
+            alert('pls write a valid data')
+        }
+
+
+    })
+
+    
+</script>
+</html>
