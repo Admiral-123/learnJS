@@ -1,0 +1,49 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM seekhlo</title>
+
+    <style>
+        .day{
+            align-content: center;
+            text-align: center;
+        }
+    </style>
+</head>
+<body style="background-color:  yellowgreen;">
+    <div class="parent">
+        <div class="day">Mon</div>
+        <div class="day">Tue</div>
+        <div class="day">Wed</div>
+        <div class="day">Thu</div>
+        <div class="day">Fri</div>
+    </div>
+</body>
+<script>    // in the inspect
+    const parent = document.querySelector('.parent')    // got the element of class parent
+    console.log(parent);        
+    console.log(parent.children)    // children of the element
+    console.log(parent.children[1].innerHTML)   // innerHTML of that element
+
+
+    for (let i = 0; i < parent.children.length; i++) {
+        console.log(parent.children[i].innerHTML);   
+    }
+
+    parent.children[2].style.color = 'orange'
+
+    console.log(parent.firstElementChild)   // the html of first child element of the selected element
+    console.log(parent.lastElementChild)   // the html of last child element of the selected element
+
+    const dayOne = document.querySelector('.day')
+    console.log(dayOne.innerText)
+
+    console.log(dayOne.parentElement)   // if we already have a children Element then we can have its parent element (in this case its "parent")
+    console.log(dayOne.nextElementSibling)  // next sibling element after this curent element
+
+
+    console.log("nodes: ", parent.childNodess)  // returns all the child nodes in the form of nodeList (tree structure); everything in DOM is in complex tree structure and childNodes contain all type of those data
+
+</script>
+</html>
