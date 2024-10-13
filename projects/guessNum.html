@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Number Game</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: gray;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #edb678;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        .title {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .input-box {
+            margin: 20px 0;
+        }
+
+        .input-box input {
+            width: 80%;
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .input-box input::placeholder {
+            color: #aaa;
+        }
+
+        .submit-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #28a745;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        .banner {
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #007bff;
+            border-radius: 5px;
+        }
+
+        .remaining-banner {
+            background-color: #dc3545;
+        }
+
+        .previous-banner {
+            background-color: #17a2b8;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="title">Guess the Number!</div>
+
+        <div class="input-box">
+            <input type="number" id="guessInput" placeholder="Guess a number">
+        </div>
+
+        <button class="submit-btn">Submit Guess</button>
+
+        <div class="banner previous-banner">
+            Previous Guess: <span id="prevGuess">None</span>
+        </div>
+
+        <div class="banner remaining-banner">
+            Guesses Remaining: <span id="remainingGuesses">10</span>
+        </div>
+    </div>
+
+</body>
+
+
+<script>
+    const num = Math.floor(Math.random()*10 + 1)
+
+    const subButton = document.querySelector('.submit-btn')
+
+    const container = document.querySelector('.container')
+
+    console.log(num)
+    
+
+    subButton.addEventListener('click', ()=>{
+        const guess = document.querySelector('#guessInput').value;
+
+        const remaining = document.querySelector('#remainingGuesses')
+        const prevGuess = document.querySelector('#prevGuess')
+
+        if(guess === ""){
+            const enterValid = document.createElement('div')
+
+            enterValid.className = "valid-guess"
+
+            const txt = document.createTextNode('pls enter a valid guess')
+
+            enterValid.appendChild(txt)
+
+            container.appendChild(enterValid)
+        }
+
+        if(guess === num){
+         container.textContent = "you won !"   
+        }
+        else{
+            prevGuess.innerHTML = guess;
+            remaining.innerHTML = Number(remaining.innerText)-1;
+        }
+
+        if(Number(remaining.innerHTML) == 0){
+            container.textContent = 'you lost :-(     refresh to play again)'
+        }
+        
+
+    })
+
+
+</script>
+</html>
