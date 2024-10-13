@@ -82,6 +82,7 @@
 
     <div class="container">
         <div class="title">Guess the Number!</div>
+        <div>guess between 1 and 11</div>
 
         <div class="input-box">
             <input type="number" id="guessInput" placeholder="Guess a number">
@@ -117,20 +118,14 @@
         const remaining = document.querySelector('#remainingGuesses')
         const prevGuess = document.querySelector('#prevGuess')
 
-        if(guess === ""){
-            const enterValid = document.createElement('div')
+        //console.log(Number(remaining.innerText))
 
-            enterValid.className = "valid-guess"
-
-            const txt = document.createTextNode('pls enter a valid guess')
-
-            enterValid.appendChild(txt)
-
-            container.appendChild(enterValid)
-        }
-
-        if(guess === num){
+        if(guess == num){
          container.textContent = "you won !"   
+        }else if(guess === ""){
+            alert('pls enter a valid number')
+        }else if(guess == Number(prevGuess.innerHTML)){
+            alert('pls enter a new value')
         }
         else{
             prevGuess.innerHTML = guess;
