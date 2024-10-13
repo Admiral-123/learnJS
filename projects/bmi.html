@@ -82,10 +82,7 @@
         const height= document.getElementById('height').value/100;
 
 
-        if(weight>0 && height>0){       // if weight and height are above 0
-            const bmi = (weight / Math.pow(height, 2)).toFixed(2);    // take the bmi
-
-            const indicator = (bmi)=>{
+        const indicator = (bmi)=>{
                 if (bmi < 18.50) {
                 return "Underweight";
             } else if (bmi >= 18.50 && bmi <= 24.90) {
@@ -95,7 +92,12 @@
             } else {
                 return "Obese";
             }
-            };
+          };
+
+
+
+        if(weight>0 && height>0){       // if weight and height are above 0
+            const bmi = (weight / Math.pow(height, 2)).toFixed(2);    // take the bmi
 
             const i = indicator(bmi);
 
