@@ -1,0 +1,81 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>html events</title>
+</head>
+<body>
+    <ul id="images" style="background-color: bisque;">
+        <li><img width="200px" id="mountain" src="https://images.pexels.com/photos/28398427/pexels-photo-28398427/free-photo-of-misty-mountain-peaks.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="mountain"></li>
+        <li><img width="200px" id="building" src="https://images.pexels.com/photos/21193046/pexels-photo-21193046/free-photo-of-a-boat-is-docked-in-front-of-a-row-of-buildings.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="building"></li>
+        <li><img width="200px" id="camera" src="https://images.pexels.com/photos/28494944/pexels-photo-28494944/free-photo-of-creative-portrait-with-mirror-reflection-in-berlin.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="camera"></li>   
+        <!-- onclick="alert('cameraman taking mirror img')"               can write this as in attribute of the li tag -->
+        <li><img width="200px" id="dog" src="https://images.pexels.com/photos/9929885/pexels-photo-9929885.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="dog"></li>
+        <li><img width="200px" id="boat" src="https://images.pexels.com/photos/28763589/pexels-photo-28763589/free-photo-of-sailboat-at-sunrise-in-naxos-greece.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="boat"></li>
+        <li><a href="https://google.com" id="google">google</a></li>
+    </ul>
+</body>
+
+<script>
+    // document.getElementById('camera').onclick = ()=>{
+    //     alert('cameraman')
+    // }  
+    //can use a better approach for the above
+
+    // document.getElementById('mountain').addEventListener('click', (e)=>{    // 'click' is a type, e is the
+    //     console.log(e)  // e = event obj
+    //     // console.log(e.timeStamp.toLocaleString())  // e.timeStamp is a number representing the number of milliseconds since the page was loaded
+    //     alert('mountain with mist')
+    // }, false)       // false is default   // defaultPrevented- can change the default behaviour of tags
+
+    // // event propagation
+
+
+    // document.getElementById('images').addEventListener('click', ()=>{
+    //     console.log("clicked inside the unordered list");
+    // }, false);
+
+    // document.getElementById('dog').addEventListener('click', ()=>{
+    //     console.log("clicked on dog");
+    // }, false);   // 'dog' is inside 'images', so when we click on the dog we'll also have the images, inner element calls the parent element (aka event bubbling) 
+    
+    // document.getElementById('building').addEventListener('click', ()=>{
+    //     console.log("clicked on building");
+    // }, true);    // capturing mode - when parent element's eventListener is true, the parent element is shown first
+
+    // document.getElementById('camera').addEventListener('click', (e)=>{
+    //     console.log("clicked on camera");
+    //     e.stopPropagation();        // stop any propagation from happening (only calls itself)
+    // }, false);
+
+
+    // document.getElementById('google').addEventListener('click', (e)=>{
+    //     e.preventDefault(); // prevent the default operation of a tag (in this case stopped anchor tag's property to open another link)
+    //     e.stopPropagation();    // stop bubbling 
+    //     console.log("google clicked");
+    // }, false);
+
+
+    // a project - when we click on the img it disappears
+
+    document.querySelector('#images').addEventListener('click', (e)=>{
+        console.log(e.target.parentNode);       // target - the place where we clicked; parentNode - parent of the node (that target) in the DOM tree
+
+        console.log(e.target.tagName);
+
+        if(e.target.tagName === 'IMG'){     // if the target node has the img tag then only remove the parentNode
+
+            console.log(e.target.id)    // logs the id of the clicked target node
+            const removeIt = e.target.parentNode;
+            removeIt.remove();
+
+        }
+
+        
+        // another method to remove the parentNode :-
+
+        // removeIt.parentNode.removeChild(removeIt);   
+    })
+
+</script>
+</html>
