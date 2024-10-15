@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click a key</title>
+    <style>
+        /* Apply styles to the entire body */
+        body {
+            margin: 0;
+            height: 100vh; /* Full viewport height */
+            background-color: black; /* Set background color to black */
+            display: flex; /* Use Flexbox to center the content */
+            justify-content: center; /* Horizontally center the content */
+            align-items: center; /* Vertically center the content */
+            color: white; /* Text color */
+            font-family: Arial, sans-serif; /* Set font */
+            font-size: 3rem; /* Font size */
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 500px;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid white;
+            font-size: 1.5rem; /* Adjust table font size */
+            color: white;
+        }
+
+        th {
+            background-color: #333; /* Darker background for headers */
+        }
+
+        .color {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Responsive styling for small devices */
+        @media (max-width: 600px) {
+            font-size: 2rem;
+            th, td {
+                font-size: 1rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Centered text -->
+    <div id="cen">Type a key</div>
+</body>
+<script>
+    const x = document.getElementById('cen');
+    window.addEventListener('keydown', (e) => {
+        x.innerHTML = `
+        <div class='color'>
+            <p>Key Details</p>
+            <table>
+                <tr>
+                    <th>Key</th>
+                    <th>KeyCode</th>
+                    <th>Code</th>
+                </tr>
+                <tr>
+                    <td>${e.key === ' ' ? 'space' : e.key}</td>
+                    <td>${e.keyCode}</td>
+                    <td>${e.code}</td>
+                </tr>
+            </table>
+        </div>
+        `;
+    });
+</script>
+</html>
