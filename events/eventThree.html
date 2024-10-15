@@ -1,0 +1,31 @@
+<!-- start and stop the interval with a button -->
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set Inteval</title>
+</head>
+<body>
+    <h1>
+        about set interval
+    </h1>
+    <button id="start">start interval</button>
+    <button id="stop">stop interval</button>
+</body>
+<script>
+
+    const hlo = (str) => { console.log("hello",str)}
+    let interval;
+
+    document.querySelector('#start').addEventListener('click', ()=>{
+        interval=setInterval(hlo,1000,"steve");
+    })
+    document.querySelector('#stop').addEventListener('click', ()=>{
+        clearInterval(interval);
+    })
+
+    
+</script>
+</html>
