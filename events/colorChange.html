@@ -1,0 +1,56 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bg color change</title>
+</head>
+<body style="background-color: black;">
+    <h1 style="text-align: center; color: rgb(255, 224, 25);">when clicked on start button the background color changes</h1>
+
+    <div style="text-align: center;">
+        <button style="display: block; margin: 0 auto; padding: 10px;" id="start">start</button>
+    </div>
+
+    <div style="text-align: right; padding: 10px;">
+        <button style="display: block; margin: 0 auto; padding: 10px;" id="stop">stop</button>
+    </div>
+</body>
+
+<script>
+
+    // to generate random colors:
+
+    const randomColor = () =>{
+        const hex = '0123456789ABCDF'
+        let color = '#'         // have 6 digits
+
+        for (let i = 0; i < 6; i++) {
+            color += hex[Math.floor(Math.random() * 16)];       // so everytime a random digit will be assigned to color from hex
+        }
+        return color;
+    }
+
+    // rest of the implementation
+
+    const changeBg = () =>{
+        document.body.style.backgroundColor = randomColor()
+    }
+
+    let intervalID;
+
+    const changeColor = () =>{
+        if(!intervalID){      // if intervalID is not assigned previously then only assign it with interval
+            intervalID = setInterval(changeBg,1000);
+        }
+    }
+
+    const stopColor = () =>{
+        clearInterval(intervalID);
+        intervalID = null;    // we had overrided the val of interval multiple time while running; so we flush out the value of interval (derefferencing all the values)
+    }
+
+    document.querySelector('#start').addEventListener('click', changeColor);    // just pass reference of method in event listener
+    document.querySelector('#stop').addEventListener('click', stopColor);
+    
+</script>
+</html>
