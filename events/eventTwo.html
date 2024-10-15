@@ -1,0 +1,52 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>async project</title>
+</head>
+<body>
+    <h1>
+        hlo there
+    </h1>
+    <button id="stop">stop</button>
+    <button id="stop-head">st0p head</button>
+</body>
+<script>
+    setTimeout(() => {      // setTimeout() : give it a certain time, after that time it'll execute the code
+        console.log("wassup")
+    }, 1000);   // 1000 milisecons (1 sec)
+
+    // setInterval(()=>{       // setInterval() : 'at certain timeInterval it'll keep executing the code
+    //     console.log("no run !");
+    // },2000)
+
+    const saySmudge = (str) => {console.log(str,' smudge');}
+
+    // setTimeout(saySmudge,2000);     // just add the reference of a func in handler
+
+
+    const changeHead = () =>{
+        document.querySelector('h1').innerHTML = "async project woah"
+    }
+
+    const head = setTimeout(changeHead, 2000);
+
+    const smudge = setInterval(saySmudge, 4000, "hi");      // set interval can have 3 parameters (reference/code, timeInterval, var)
+
+    // clearInterval(smudge);   // stops the interval
+    // clearTimeout(head);      // stops the code from executing before timeout
+
+    document.querySelector('#stop').addEventListener('click' ,()=>{
+        clearInterval(smudge)
+        console.log('STOPPED')
+    })
+
+    document.querySelector('#stop-head').addEventListener('click', ()=>{
+        clearTimeout(head)
+    })
+
+    
+    
+
+</script>
+</html>
