@@ -1,0 +1,40 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>Button Click</button>
+</body>
+<script>
+    // Define a custom class named React
+    class React {
+        constructor(){
+            this.library = "React"; // Class property defining the library name
+            this.server = "https://localhost:3000" // Another property for the server
+
+            // Set up an event listener for the button click.
+            // `this` in this context refers to the instance of the React class.
+            // When we pass this.handleClick to the event listener, we lose the original `this` context, 
+            // because the event listener changes the scope where `this` is defined. 
+            // Therefore, we need to bind `this` to the class instance so that the `this` keyword 
+            // inside `handleClick()` refers to the current instance of React.
+            document
+                .querySelector('button')
+                .addEventListener('click', this.handleClick.bind(this)) 
+                // Using bind(this) here ensures that inside handleClick, `this` refers to the class instance.
+        }
+
+        // Method to handle the button click event
+        handleClick(){
+            console.log('button clicked'); // Logs a message when the button is clicked
+            console.log(this); // Logs the current `this` context (the React class instance)
+        }
+
+    }
+
+    // Create an instance of the React class, which triggers the constructor
+    const app = new React()
+</script>
+</html>
