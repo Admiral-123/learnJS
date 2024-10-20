@@ -13,3 +13,21 @@ const getNumber = () =>{
 getNumber().then((res)=>{
     console.log(res);
 }).catch((err)=> console.log(`error: ${err}`));
+
+
+
+// same thing in async await
+
+
+// const displayNum = async () => {
+//     try{
+//     const num = await getNumber();
+//     console.log(num);
+//     }
+//     catch(err){
+//         console.log(`error : ${err}`);
+//     }
+// }
+
+
+// displayNum()
